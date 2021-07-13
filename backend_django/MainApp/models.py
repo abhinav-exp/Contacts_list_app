@@ -6,6 +6,9 @@ class Contact(models.Model):
     First_Name = models.CharField(max_length=30)
     Last_Name = models.CharField(max_length=30)
 
+    class Meta:
+        unique_together = (('First_Name', 'Second_Name'),)
+
     Profile_Pic = models.ImageField()
 
     Email = models.EmailField()
