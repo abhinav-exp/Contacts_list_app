@@ -7,7 +7,7 @@ class Contact(models.Model):
     Last_Name = models.CharField(max_length=30)
 
     class Meta:
-        unique_together = (('First_Name', 'Second_Name'),)
+        unique_together = (('First_Name', 'Last_Name'),)
 
     Profile_Pic = models.ImageField()
 
