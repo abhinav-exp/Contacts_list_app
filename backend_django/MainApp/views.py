@@ -20,10 +20,25 @@ class CRUD(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
-    # def delete(self, request, id):
-    #     obj = Contact.objects.get(id = id)
-    #     obj.delete()
-    #     return Response(status=status.HTTP_204_NO_CONTENT)
+class CRUD_single(APIView):
+    def get(self, request, id):
+        try :
+            Contactq = Contact.objects.get(id = id)
+            serializer = ContactSerializer(Contactq)
+            return Response(serializer.data)
+        except:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, id):
+        try :
+            obj = Contact.objects.get(id = id)
+            obj.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        except :
+            return Response(status=status.HTTP_400_BAD_REQUEST)
     
-    # def pui(self, request, id):
-    #     pass
+    def put(self, request, id):
+        obj = Contact.objects.get(id = id)
+        serialized = ContactSerializer(obj)
+        serialized.update(obj, request.data)
+        return Response(serialized.data, status=status.HTTP_201_CREATED)
