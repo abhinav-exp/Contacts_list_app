@@ -11,7 +11,9 @@ class CRUD(APIView):
     def get(self, request):
         Contactq = Contact.objects.all()
         serializer = ContactSerializer(Contactq, many=True)
-        return Response(serializer.data)
+        r = Response(serializer.data)
+        print(r.data)
+        return r
     
     def post(self, request):
         serializer = ContactSerializer(data=request.data)
