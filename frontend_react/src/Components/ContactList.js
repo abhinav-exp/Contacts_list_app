@@ -9,23 +9,35 @@ class ContactList extends React.Component
         this.state = {
             data : []
         };
+        console.log("BIG BANG");
     }
-    componentDidMount(){
+    componentDidMount = () => {
+        console.log("CDM started");
+        let ref_to_this = this;
         axios.get('http://127.0.0.1:8000/?format=json',)
         .then(function (response) {
             console.log(response.data);
-            this.setState('data' : response.data);
+            ref_to_this.setState({data : response.data});
+            console.log(ref_to_this.state.data);
+            console.log("CDM finished")
         })
         .catch(function (error) {
             console.log(error);
+            console.log("CDM finished")
         });
     }
-    render(){
-        const r = this.state.data.reduce((temp, x) => {
-            return (<ContactCard />)
-        }, null)
-        console.log(JSON.stringify(r))
-        return (<div> ;) </div>)
+    render = () => {
+        console.log("render started");
+        console.log(this.state.data)
+        const t = []
+        this.state.data.forEach(e => {
+            t.push(<ContactCard carddetails = {e}/>)
+        });
+        console.log(t)
+        console.log("render finished");
+        return (<div> 
+                {t}
+             </div>)
     }
 }
 
