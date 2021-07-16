@@ -16,10 +16,12 @@ class CRUD(APIView):
         return r
     
     def post(self, request):
+        print(request.FILES)
         serializer = ContactSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
+        print(request.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 class CRUD_single(APIView):
