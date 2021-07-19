@@ -1,48 +1,32 @@
 import React from 'react'
 import axios from 'axios';
 
-class AddContact extends React.Component 
+class EditContact extends React.Component 
 {
     constructor(props){
         super(props)
-        this.state = {
-            'postdetails' : {}
-        }
         this.obj = new FormData();
-        // this.posting.bind(this)
+        this.editing = this.editing.bind(this)
     }
-    // posting() was not making variables accessable
-    posting = () =>{
-        console.log("posted")
-        //console.log(this.obj)
+    editing = () =>{
         const d = this.obj
-        console.log(d)
         const h = {
             "content-type": "multipart/form-data",
         }
-        axios.post('http://127.0.0.1:8000/',d, h)
+        const refToSelf = this;
+        axios.put('http://127.0.0.1:8000/'+this.props.id,d, h)
         .then(function (response) {
-            console.log(response.data);
-            // I need this data here ^^
-            return response.data;
+            //console.log(response.data);
+            refToSelf.props.lcf();
         })
         .catch(function (error) {
             console.log(error);
         });
     }
-    // onchangedata(k, v){
-    //     console.log(k)
-    //     console.log(v)
-    //     console.log("event happened")
-    //     const d = this.state['postdetails']
-    //     d[k] = v;
-    //     this.setState({'postdetails' : d})
-    //     console.log(this.state['postdetails'])
-    // }
     render()
     {
         return (<div className = "ui main" >
-            <h2> Add Contact </h2>
+            <h2> Edit Contact  {this.props.id} </h2>
             <form className = "ui form" >
                 <div className = "field" >
                     <label>
@@ -96,11 +80,11 @@ class AddContact extends React.Component
                     </input>
                 </div>
             </form>
-                <button className = "ui button blue" onClick={this.posting}>
-                    Add
+                <button className = "ui button blue" onClick={this.editing}>
+                    Edit
                 </button>
         </div>)
     }
 }
 
-export default AddContact;
+export default EditContact;
