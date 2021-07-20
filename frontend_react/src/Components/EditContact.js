@@ -80,8 +80,12 @@ class EditContact extends React.Component
                     </input>
                 </div>
             </form>
+            <br></br>
                 <button className = "ui button blue" onClick={this.editing}>
                     Edit
+                </button>
+                <button className = "ui button green float-end" onClick={this.props.lcf}>
+                    Back
                 </button>
         </div>)
     }

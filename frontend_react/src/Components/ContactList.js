@@ -31,7 +31,7 @@ class ContactList extends React.Component
         //console.log(this.state.data)
         const t = []
         this.state.data.forEach(e => {
-            t.push(<ContactCard carddetails = {e} edf = {this.props.edf}/>)
+            t.push(<ContactCard carddetails = {e} edf = {this.props.edf} rfs = {this.props.refrsh}/>)
         });
         //console.log(t)
         //console.log("render finished");
@@ -40,6 +40,9 @@ class ContactList extends React.Component
                 <div className="ui celled list" style={{marginLeft : '12.5%', marginRight : '12.5%'}}>
                     {t}
                 </div>
+                <button className = "ui button green big float-end" onClick = {this.props.acf}>
+                    Add Contacts
+                </button>
              </div>)
     }
 }
