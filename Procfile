@@ -1,0 +1,1 @@
+web: gunicorn --chdir ./backend_django backend_django.wsgi
