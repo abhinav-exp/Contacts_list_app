@@ -7,6 +7,9 @@ from .serializers import ContactSerializer
 from rest_framework import status
 
 # Create your views here.
+def Reactapp(request):
+    return render(request, 'index.html')
+
 class CRUD(APIView):
     def get(self, request):
         Contactq = Contact.objects.all()

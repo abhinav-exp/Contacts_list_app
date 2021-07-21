@@ -20,7 +20,7 @@ class AddContact extends React.Component
         const h = {
             "content-type": "multipart/form-data",
         }
-        var u = process.env.REACT_APP_BACKEND_DOMAIN
+        var u = process.env.REACT_APP_BACKEND_DOMAIN + "/all"
         console.log(u)
         axios.post(u,d, h)
         .then(function (response) {

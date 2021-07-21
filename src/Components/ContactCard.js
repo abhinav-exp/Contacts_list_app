@@ -10,6 +10,9 @@ class ContactCard extends React.Component{
         this.editcard = this.editcard.bind(this)
         this.deletecard = this.deletecard.bind(this)
     }
+    componentDidMount(){
+        console.log(this.state);
+    }
     editcard(){
         //axios.delete()
         var a = this.state.card.id
