@@ -14,7 +14,8 @@ class ContactList extends React.Component
     componentDidMount = () => {
         //console.log("CDM started");
         let ref_to_this = this;
-        axios.get('http://127.0.0.1:8000/?format=json',)
+        var u = process.env.REACT_APP_BACKEND_DOMAIN
+        axios.get(u,)
         .then(function (response) {
             //console.log(response.data);
             ref_to_this.setState({data : response.data});

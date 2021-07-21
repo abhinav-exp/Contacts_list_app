@@ -16,7 +16,7 @@ class ContactCard extends React.Component{
         this.props.edf(a);
     }
     deletecard(){
-        var u = `http://127.0.0.1:8000/${this.state.card.id}`
+        var u = process.env.REACT_APP_BACKEND_DOMAIN+'/'+this.state.card.id
         console.log(u)
         
         axios.delete(u,)
@@ -30,11 +30,11 @@ class ContactCard extends React.Component{
     }
     render()
     {
-        //console.log(this.state.card);
+        //console.log(this.state.card);/media/On_Stranger_Tides_Poster.jpeg
         //console.log(this.state.card.Profile_Pic)
         return (
         <div className="item" >
-            <img className="rounded float-start" style={{height : 100}} src={"http://127.0.0.1:8000" + this.state.card.Profile_Pic} alt="Prof Pic"></img>
+            <img className="rounded float-start" style={{height : 100}} src={process.env.REACT_APP_BACKEND_DOMAIN + this.state.card.Profile_Pic} alt="Prof Pic"></img>
             <div className="content" style={{textAlign : 'center'}}>
                 <div className="header" >
                     <h2>Name : {this.state.card.First_Name} {this.state.card.Last_Name}</h2> 

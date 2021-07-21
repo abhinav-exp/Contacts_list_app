@@ -20,9 +20,11 @@ class AddContact extends React.Component
         const h = {
             "content-type": "multipart/form-data",
         }
-        axios.post('http://127.0.0.1:8000/',d, h)
+        var u = process.env.REACT_APP_BACKEND_DOMAIN
+        console.log(u)
+        axios.post(u,d, h)
         .then(function (response) {
-            //console.log(response.data);
+            console.log(response.data);
             // I need this data here ^^
             return response.data;
         })

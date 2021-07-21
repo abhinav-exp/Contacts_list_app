@@ -14,7 +14,9 @@ class EditContact extends React.Component
             "content-type": "multipart/form-data",
         }
         const refToSelf = this;
-        axios.put('http://127.0.0.1:8000/'+this.props.id,d, h)
+        var u = process.env.REACT_APP_BACKEND_DOMAIN
+        console.log(u)
+        axios.put(u+"/"+this.props.id,d, h)
         .then(function (response) {
             //console.log(response.data);
             refToSelf.props.lcf();
